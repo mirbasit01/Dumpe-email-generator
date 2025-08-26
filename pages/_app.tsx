@@ -16,6 +16,7 @@ const TempEmailGenerator: React.FC = () => {
   const [selectedEmail, setSelectedEmail] = useState<Email | null>(null);
   const [timeRemaining, setTimeRemaining] = useState<number>(600); // 10 minutes in seconds
   const [isActive, setIsActive] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   const domains = [
     '@tempmail.org',
@@ -112,6 +113,17 @@ const TempEmailGenerator: React.FC = () => {
     }
   };
 
+  // Check screen size
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
   // Timer countdown
   useEffect(() => {
     if (!isActive || timeRemaining <= 0) return;
@@ -198,7 +210,7 @@ const TempEmailGenerator: React.FC = () => {
         {/* Main Content */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: window.innerWidth > 1024 ? '1fr 2fr' : '1fr',
+          gridTemplateColumns: isMobile ? '1fr' : '1fr 2fr',
           gap: '30px'
         }}>
           {/* Email Generator Panel */}
