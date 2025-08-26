@@ -1,9 +1,3 @@
-// import type { AppProps } from "next/app";
-
-// export default function App({ Component, pageProps }: AppProps) {
-//   return <Component {...pageProps} />;
-// }
-
 import React, { useState, useEffect } from 'react';
 import { Copy, RefreshCw, Mail, Trash2, Clock, Shield, Eye } from 'lucide-react';
 
@@ -158,77 +152,211 @@ const TempEmailGenerator: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 p-4">
-      <div className="max-w-6xl mx-auto">
+    <div style={{
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #1a202c 100%)',
+      padding: '20px',
+      fontFamily: 'Arial, sans-serif'
+    }}>
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto'
+      }}>
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center mb-4">
-            <Mail className="w-12 h-12 text-cyan-400 mr-3" />
-            <h1 className="text-4xl font-bold text-white">TempMail</h1>
+        <div style={{
+          textAlign: 'center',
+          marginBottom: '40px'
+        }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginBottom: '20px'
+          }}>
+            <Mail style={{
+              width: '48px',
+              height: '48px',
+              color: '#00d4ff',
+              marginRight: '15px'
+            }} />
+            <h1 style={{
+              fontSize: '48px',
+              fontWeight: 'bold',
+              color: 'white',
+              margin: 0
+            }}>TempMail</h1>
           </div>
-          <p className="text-gray-300 text-lg">
+          <p style={{
+            color: '#a0aec0',
+            fontSize: '18px',
+            margin: 0
+          }}>
             Disposable Temporary Email Generator - Keep your real inbox clean
           </p>
         </div>
 
         {/* Main Content */}
-        <div className="grid lg:grid-cols-3 gap-6">
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: window.innerWidth > 1024 ? '1fr 2fr' : '1fr',
+          gap: '30px'
+        }}>
           {/* Email Generator Panel */}
-          <div className="lg:col-span-1 space-y-6">
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '30px'
+          }}>
             {/* Current Email Display */}
-            <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
-              <h2 className="text-xl font-semibold text-white mb-4">
+            <div style={{
+              backgroundColor: '#2d3748',
+              borderRadius: '12px',
+              padding: '30px',
+              border: '1px solid #4a5568'
+            }}>
+              <h2 style={{
+                fontSize: '24px',
+                fontWeight: '600',
+                color: 'white',
+                marginBottom: '20px'
+              }}>
                 Your Temporary Email Address
               </h2>
               
               {currentEmail ? (
-                <div className="space-y-4">
-                  <div className="bg-gray-900 p-4 rounded-lg border border-gray-600">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-cyan-400 font-mono text-sm break-all">
+                <div style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '20px'
+                }}>
+                  <div style={{
+                    backgroundColor: '#1a202c',
+                    padding: '20px',
+                    borderRadius: '8px',
+                    border: '1px solid #4a5568'
+                  }}>
+                    <div style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      marginBottom: '10px'
+                    }}>
+                      <span style={{
+                        color: '#00d4ff',
+                        fontFamily: 'monospace',
+                        fontSize: '14px',
+                        wordBreak: 'break-all'
+                      }}>
                         {currentEmail}
                       </span>
                       <button
                         onClick={() => copyToClipboard(currentEmail)}
-                        className="text-gray-400 hover:text-white transition-colors"
+                        style={{
+                          background: 'none',
+                          border: 'none',
+                          color: '#a0aec0',
+                          cursor: 'pointer',
+                          padding: '5px'
+                        }}
                       >
-                        <Copy className="w-4 h-4" />
+                        <Copy style={{ width: '16px', height: '16px' }} />
                       </button>
                     </div>
                     
                     {isActive && (
-                      <div className="flex items-center text-orange-400 text-sm">
-                        <Clock className="w-4 h-4 mr-1" />
+                      <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        color: '#f6ad55',
+                        fontSize: '14px'
+                      }}>
+                        <Clock style={{ width: '16px', height: '16px', marginRight: '5px' }} />
                         Expires in: {formatTime(timeRemaining)}
                       </div>
                     )}
                   </div>
                   
-                  <div className="flex gap-2">
+                  <div style={{
+                    display: 'flex',
+                    gap: '10px'
+                  }}>
                     <button
                       onClick={createNewEmail}
-                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors flex items-center justify-center"
+                      style={{
+                        flex: 1,
+                        backgroundColor: '#3182ce',
+                        color: 'white',
+                        padding: '12px 20px',
+                        borderRadius: '8px',
+                        border: 'none',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: '16px',
+                        fontWeight: '500',
+                        transition: 'background-color 0.2s'
+                      }}
+                      onMouseOver={(e) => e.target.style.backgroundColor = '#2c5282'}
+                      onMouseOut={(e) => e.target.style.backgroundColor = '#3182ce'}
                     >
-                      <RefreshCw className="w-4 h-4 mr-2" />
+                      <RefreshCw style={{ width: '16px', height: '16px', marginRight: '8px' }} />
                       Generate New
                     </button>
                     <button
                       onClick={deleteEmail}
-                      className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg transition-colors"
+                      style={{
+                        backgroundColor: '#e53e3e',
+                        color: 'white',
+                        padding: '12px 20px',
+                        borderRadius: '8px',
+                        border: 'none',
+                        cursor: 'pointer',
+                        transition: 'background-color 0.2s'
+                      }}
+                      onMouseOver={(e) => e.target.style.backgroundColor = '#c53030'}
+                      onMouseOut={(e) => e.target.style.backgroundColor = '#e53e3e'}
                     >
-                      <Trash2 className="w-4 h-4" />
+                      <Trash2 style={{ width: '16px', height: '16px' }} />
                     </button>
                   </div>
                 </div>
               ) : (
-                <div className="text-center">
-                  <div className="bg-gray-900 p-8 rounded-lg border border-gray-600 mb-4">
-                    <Mail className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-                    <p className="text-gray-400">No active email address</p>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{
+                    backgroundColor: '#1a202c',
+                    padding: '40px',
+                    borderRadius: '8px',
+                    border: '1px solid #4a5568',
+                    marginBottom: '20px'
+                  }}>
+                    <Mail style={{
+                      width: '64px',
+                      height: '64px',
+                      color: '#4a5568',
+                      margin: '0 auto 20px'
+                    }} />
+                    <p style={{
+                      color: '#a0aec0',
+                      margin: 0
+                    }}>No active email address</p>
                   </div>
                   <button
                     onClick={createNewEmail}
-                    className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white py-3 px-6 rounded-lg transition-all font-semibold"
+                    style={{
+                      width: '100%',
+                      background: 'linear-gradient(to right, #00d4ff, #3182ce)',
+                      color: 'white',
+                      padding: '15px 30px',
+                      borderRadius: '8px',
+                      border: 'none',
+                      cursor: 'pointer',
+                      fontSize: '16px',
+                      fontWeight: '600',
+                      transition: 'all 0.2s'
+                    }}
+                    onMouseOver={(e) => e.target.style.transform = 'translateY(-2px)'}
+                    onMouseOut={(e) => e.target.style.transform = 'translateY(0)'}
                   >
                     Generate Temporary Email
                   </button>
@@ -237,117 +365,237 @@ const TempEmailGenerator: React.FC = () => {
             </div>
 
             {/* Info Panel */}
-            <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
-              <h3 className="text-lg font-semibold text-white mb-4">
+            <div style={{
+              backgroundColor: '#2d3748',
+              borderRadius: '12px',
+              padding: '30px',
+              border: '1px solid #4a5568'
+            }}>
+              <h3 style={{
+                fontSize: '20px',
+                fontWeight: '600',
+                color: 'white',
+                marginBottom: '20px'
+              }}>
                 What is Disposable Temporary E-mail?
               </h3>
-              <div className="text-gray-300 text-sm space-y-3">
-                <p>
+              <div style={{
+                color: '#a0aec0',
+                fontSize: '14px',
+                lineHeight: '1.6'
+              }}>
+                <p style={{ marginBottom: '15px' }}>
                   <strong>Disposable email</strong> - is a free email service that allows to receive email at a temporary address that self-destructed after a certain time elapses.
                 </p>
-                <p>
+                <p style={{ marginBottom: '15px' }}>
                   It is also known by names like: tempmail, 10minutemail, 10minmail, throwaway email, fake-mail, fake email generator, burner mail or trash-mail.
                 </p>
-                <p>
+                <p style={{ marginBottom: '20px' }}>
                   Many forums, Wi-Fi owners, websites and blogs ask visitors to register before they can view content, post comments or download something. Temp-Mail is most advanced throwaway email service that helps you avoid spam and stay safe.
                 </p>
               </div>
               
-              <div className="mt-4 flex items-center text-green-400 text-sm">
-                <Shield className="w-4 h-4 mr-2" />
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                color: '#68d391',
+                fontSize: '14px'
+              }}>
+                <Shield style={{ width: '16px', height: '16px', marginRight: '8px' }} />
                 Secure • Anonymous • Free
               </div>
             </div>
           </div>
 
           {/* Inbox Panel */}
-          <div className="lg:col-span-2">
-            <div className="bg-gray-800 rounded-xl border border-gray-700 h-[600px] flex flex-col">
+          <div>
+            <div style={{
+              backgroundColor: '#2d3748',
+              borderRadius: '12px',
+              border: '1px solid #4a5568',
+              height: '600px',
+              display: 'flex',
+              flexDirection: 'column'
+            }}>
               {/* Inbox Header */}
-              <div className="bg-gray-900 p-4 rounded-t-xl border-b border-gray-700">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-white font-semibold flex items-center">
-                    <Mail className="w-5 h-5 mr-2" />
+              <div style={{
+                backgroundColor: '#1a202c',
+                padding: '20px',
+                borderTopLeftRadius: '12px',
+                borderTopRightRadius: '12px',
+                borderBottom: '1px solid #4a5568'
+              }}>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between'
+                }}>
+                  <h3 style={{
+                    color: 'white',
+                    fontWeight: '600',
+                    display: 'flex',
+                    alignItems: 'center',
+                    margin: 0
+                  }}>
+                    <Mail style={{ width: '20px', height: '20px', marginRight: '8px' }} />
                     Inbox ({emails.length})
                   </h3>
-                  <div className="text-sm text-gray-400">
+                  <div style={{
+                    fontSize: '14px',
+                    color: '#a0aec0'
+                  }}>
                     {isActive ? 'Active' : 'Inactive'}
                   </div>
                 </div>
               </div>
 
               {/* Email List or Email View */}
-              <div className="flex-1 overflow-hidden">
+              <div style={{ flex: 1, overflow: 'hidden' }}>
                 {selectedEmail ? (
                   /* Email View */
-                  <div className="h-full flex flex-col">
-                    <div className="p-4 border-b border-gray-700">
+                  <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                    <div style={{
+                      padding: '20px',
+                      borderBottom: '1px solid #4a5568'
+                    }}>
                       <button
                         onClick={() => setSelectedEmail(null)}
-                        className="text-cyan-400 hover:text-cyan-300 text-sm mb-3"
+                        style={{
+                          color: '#00d4ff',
+                          fontSize: '14px',
+                          marginBottom: '15px',
+                          background: 'none',
+                          border: 'none',
+                          cursor: 'pointer'
+                        }}
                       >
                         ← Back to Inbox
                       </button>
-                      <h4 className="text-white font-semibold text-lg mb-2">
+                      <h4 style={{
+                        color: 'white',
+                        fontWeight: '600',
+                        fontSize: '18px',
+                        marginBottom: '10px'
+                      }}>
                         {selectedEmail.subject}
                       </h4>
-                      <div className="text-gray-400 text-sm">
+                      <div style={{
+                        color: '#a0aec0',
+                        fontSize: '14px',
+                        marginBottom: '5px'
+                      }}>
                         From: {selectedEmail.from}
                       </div>
-                      <div className="text-gray-400 text-sm">
+                      <div style={{
+                        color: '#a0aec0',
+                        fontSize: '14px'
+                      }}>
                         {selectedEmail.timestamp.toLocaleString()}
                       </div>
                     </div>
-                    <div className="flex-1 p-4 overflow-y-auto">
-                      <div className="text-gray-300 whitespace-pre-wrap">
+                    <div style={{
+                      flex: 1,
+                      padding: '20px',
+                      overflowY: 'auto'
+                    }}>
+                      <div style={{
+                        color: '#a0aec0',
+                        whiteSpace: 'pre-wrap'
+                      }}>
                         {selectedEmail.body}
                       </div>
                     </div>
                   </div>
                 ) : (
                   /* Email List */
-                  <div className="h-full overflow-y-auto">
+                  <div style={{ height: '100%', overflowY: 'auto' }}>
                     {emails.length === 0 ? (
-                      <div className="h-full flex items-center justify-center text-center">
+                      <div style={{
+                        height: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        textAlign: 'center'
+                      }}>
                         <div>
-                          <Mail className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-                          <p className="text-gray-400 text-lg mb-2">Your inbox is empty</p>
-                          <p className="text-gray-500 text-sm">
+                          <Mail style={{
+                            width: '64px',
+                            height: '64px',
+                            color: '#4a5568',
+                            margin: '0 auto 20px'
+                          }} />
+                          <p style={{
+                            color: '#a0aec0',
+                            fontSize: '18px',
+                            marginBottom: '10px'
+                          }}>Your inbox is empty</p>
+                          <p style={{
+                            color: '#718096',
+                            fontSize: '14px'
+                          }}>
                             {currentEmail ? 'Waiting for incoming emails...' : 'Generate an email address to start receiving emails'}
                           </p>
                         </div>
                       </div>
                     ) : (
-                      <div className="divide-y divide-gray-700">
-                        {emails.map((email) => (
+                      <div>
+                        {emails.map((email, index) => (
                           <div
                             key={email.id}
                             onClick={() => openEmail(email)}
-                            className={`p-4 hover:bg-gray-700 cursor-pointer transition-colors ${
-                              !email.isRead ? 'bg-gray-750' : ''
-                            }`}
+                            style={{
+                              padding: '20px',
+                              cursor: 'pointer',
+                              transition: 'background-color 0.2s',
+                              backgroundColor: !email.isRead ? '#374151' : 'transparent',
+                              borderBottom: index < emails.length - 1 ? '1px solid #4a5568' : 'none'
+                            }}
+                            onMouseOver={(e) => e.target.style.backgroundColor = '#4a5568'}
+                            onMouseOut={(e) => e.target.style.backgroundColor = !email.isRead ? '#374151' : 'transparent'}
                           >
-                            <div className="flex items-start justify-between mb-2">
-                              <div className="flex items-center">
-                                <div className={`w-2 h-2 rounded-full mr-3 ${
-                                  !email.isRead ? 'bg-blue-500' : 'bg-transparent'
-                                }`} />
-                                <span className={`font-medium ${
-                                  !email.isRead ? 'text-white' : 'text-gray-300'
-                                }`}>
+                            <div style={{
+                              display: 'flex',
+                              alignItems: 'flex-start',
+                              justifyContent: 'space-between',
+                              marginBottom: '10px'
+                            }}>
+                              <div style={{ display: 'flex', alignItems: 'center' }}>
+                                <div style={{
+                                  width: '8px',
+                                  height: '8px',
+                                  borderRadius: '50%',
+                                  marginRight: '15px',
+                                  backgroundColor: !email.isRead ? '#3182ce' : 'transparent'
+                                }} />
+                                <span style={{
+                                  fontWeight: '500',
+                                  color: !email.isRead ? 'white' : '#a0aec0'
+                                }}>
                                   {email.from}
                                 </span>
                               </div>
-                              <span className="text-gray-500 text-xs">
+                              <span style={{
+                                color: '#718096',
+                                fontSize: '12px'
+                              }}>
                                 {email.timestamp.toLocaleTimeString()}
                               </span>
                             </div>
-                            <h4 className={`font-medium mb-1 ${
-                              !email.isRead ? 'text-white' : 'text-gray-300'
-                            }`}>
+                            <h4 style={{
+                              fontWeight: '500',
+                              marginBottom: '5px',
+                              color: !email.isRead ? 'white' : '#a0aec0'
+                            }}>
                               {email.subject}
                             </h4>
-                            <p className="text-gray-500 text-sm truncate">
+                            <p style={{
+                              color: '#718096',
+                              fontSize: '14px',
+                              margin: 0,
+                              overflow: 'hidden',
+                              textOverflow: 'ellipsis',
+                              whiteSpace: 'nowrap'
+                            }}>
                               {email.body}
                             </p>
                           </div>
