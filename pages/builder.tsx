@@ -33,6 +33,12 @@ export default function BuilderPage() {
     if (selectedId === id) setSelectedId(null);
   }
 
+  function newadd(id: string){
+    const newBlock: BlockEdit = {id : uuidv4() , type: 'text' , content: '<p> Example Text</p> '}
+    setBlocks(prev => [...prev, newBlock]);
+    setSelectedId(newBlock.id);
+  }
+
   function moveUp(index: number) {
     if (index === 0) return;
     setBlocks(prev => {
