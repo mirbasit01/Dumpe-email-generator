@@ -10,10 +10,9 @@
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
-    "autoprefixer": "^10.4.21",
+    "lucide-react": "^0.542.0",
     "next": "15.5.0",
     "nodemailer": "^7.0.5",
-    "postcss": "^8.5.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "uuid": "^11.1.0"
@@ -25,8 +24,10 @@
     "@types/nodemailer": "^7.0.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "15.5.0",
+    "postcss": "^8.5.6",
     "tailwindcss": "^4.1.12",
     "typescript": "^5"
   }
