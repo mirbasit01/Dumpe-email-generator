@@ -113,6 +113,8 @@ const createNewEmail = async () => {
       const response = await axios.post('/api/gmailnator');
       setData(response.data);
       setCurrentEmail(response.data.email);
+          setTimeRemaining(600);
+    setIsActive(true);
     } catch (err) {
       console.error(err);
     }

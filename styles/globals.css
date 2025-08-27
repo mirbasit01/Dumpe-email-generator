@@ -2,9 +2,4 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply
-}
-html, body {
-  @apply antialiased;
-}
+ 
