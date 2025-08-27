@@ -5,3 +5,6 @@
 body {
   @apply
 }
+html, body {
+  @apply antialiased;
+}

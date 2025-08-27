@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Alias {
+  id        String   @id @default(cuid())
+  address   String   @unique
+  createdAt DateTime @default(now())
+  messages  Message[]
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  aliasId   String
+  alias     Alias    @relation(fields: [aliasId], references: [id])
+  from      String
+  subject   String?
+  body      String?
+  createdAt DateTime @default(now())
+}
