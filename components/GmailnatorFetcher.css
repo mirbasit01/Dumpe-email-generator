@@ -1,0 +1,44 @@
+.email-generator-panel{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.gmailnator-fetcher{
+       min-height: 100vh;
+      background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #1a202c 100%);
+      padding: 20px;
+      font-family: Arial, sans-serif;
+}
+.gmailnator-fetcher-content{
+     max-width: 1200px;
+        margin: 0 auto;
+}
+.header{
+     text-align: center;
+     margin-bottom: 40px;
+}
+.header-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.mail-icon{
+     width: 48px;
+              height: 48px;
+              color: #00d4ff;
+              margin-right: 15px;
+}
+.header-title{
+     font-size: 48px;
+              font-weight: bold;
+              color: white;
+              margin: 0;
+}
+.header-subtitle{
+
+    color: '#a0aec0';
+    font-size: 18px;
+    margin: 0;
+
+}

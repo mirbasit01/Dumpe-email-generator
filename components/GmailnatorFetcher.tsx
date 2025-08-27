@@ -1,61 +1,7 @@
-// // components/GmailnatorFetcher.tsx
-// import { useState } from 'react';
-// import axios from 'axios';
-
-// const GmailnatorFetcher: React.FC = () => {
-//   const [data, setData] = useState<any>(null);
-
-//   const fetchData = async () => {
-//     try {
-//       const response = await axios.post('/api/gmailnator');
-//       setData(response.data);
-//     } catch (err) {
-//       console.error(err);
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <button onClick={fetchData} className="p-2 bg-blue-500 text-white rounded">
-//         Fetch Gmailnator Data
-//       </button>
-
-//       {data && (
-//         <pre className="mt-4 bg-gray-100 p-2 rounded">{JSON.stringify(data, null, 2)}</pre>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default GmailnatorFetcher;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React, { useState, useEffect } from 'react';
 import { Copy, RefreshCw, Mail, Trash2, Clock, Shield, Eye } from 'lucide-react';
 import axios from 'axios';
-
+ 
 interface Email {
   id: string;
   from: string;
@@ -239,45 +185,15 @@ const createNewEmail = async () => {
   };
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      background: 'linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #1a202c 100%)',
-      padding: '20px',
-      fontFamily: 'Arial, sans-serif'
-    }}>
-      <div style={{
-        maxWidth: '1200px',
-        margin: '0 auto'
-      }}>
+    <div className='gmailnator-fetcher'>
+      <div className='gmailnator-fetcher-content'>
         {/* Header */}
-        <div style={{
-          textAlign: 'center',
-          marginBottom: '40px'
-        }}>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginBottom: '20px'
-          }}>
-            <Mail style={{
-              width: '48px',
-              height: '48px',
-              color: '#00d4ff',
-              marginRight: '15px'
-            }} />
-            <h1 style={{
-              fontSize: '48px',
-              fontWeight: 'bold',
-              color: 'white',
-              margin: 0
-            }}>TempMail</h1>
+        <div className='header'>
+          <div className='header-content'>
+            <Mail className='mail-icon' />
+            <h1 className='header-title'>TempMail</h1>
           </div>
-          <p style={{
-            color: '#a0aec0',
-            fontSize: '18px',
-            margin: 0
-          }}>
+          <p className='header-subtitle'>
             Disposable Temporary Email Generator - Keep your real inbox clean
           </p>
         </div>
@@ -289,11 +205,7 @@ const createNewEmail = async () => {
           gap: '30px'
         }}>
           {/* Email Generator Panel */}
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '30px'
-          }}>
+          <div className='email-generator-panel'>
             {/* Current Email Display */}
             <div style={{
               backgroundColor: '#2d3748',
