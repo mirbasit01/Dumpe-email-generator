@@ -1,12 +1,16 @@
-import TempEmailGenerator from '@/components/email/TempEmailGenerator'
-import React from 'react'
+import "@/styles/globals.css";
+import TempEmailGenerator from "@/components/email/TempEmailGenerator";
 
-const _app = () => {
+import type { AppProps } from "next/app";
+
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div>
+    <>
+      {/* Your persistent UI like navbar, footer, or in your case email generator */}
       <TempEmailGenerator />
-    </div>
-  )
-}
 
-export default _app
+      {/* Render the current page */}
+      <Component {...pageProps} />
+    </>
+  );
+}
