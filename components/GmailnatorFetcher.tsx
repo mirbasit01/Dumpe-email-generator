@@ -384,8 +384,8 @@ const createNewEmail = async () => {
                         fontWeight: '500',
                         transition: 'background-color 0.2s'
                       }}
-                      onMouseOver={(e) => e.target.style.backgroundColor = '#2c5282'}
-                      onMouseOut={(e) => e.target.style.backgroundColor = '#3182ce'}
+                      onMouseOver={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#2c5282'}
+                      onMouseOut={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#3182ce'}
                     >
                       <RefreshCw style={{ width: '16px', height: '16px', marginRight: '8px' }} />
                       Generate New
@@ -401,8 +401,8 @@ const createNewEmail = async () => {
                         cursor: 'pointer',
                         transition: 'background-color 0.2s'
                       }}
-                      onMouseOver={(e) => e.target.style.backgroundColor = '#c53030'}
-                      onMouseOut={(e) => e.target.style.backgroundColor = '#e53e3e'}
+                      onMouseOver={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#c53030'}
+                      onMouseOut={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#e53e3e'}
                     >
                       <Trash2 style={{ width: '16px', height: '16px' }} />
                     </button>
@@ -442,8 +442,8 @@ const createNewEmail = async () => {
                       fontWeight: '600',
                       transition: 'all 0.2s'
                     }}
-                    onMouseOver={(e) => e.target.style.transform = 'translateY(-2px)'}
-                    onMouseOut={(e) => e.target.style.transform = 'translateY(0)'}
+                    onMouseOver={(e) => (e.target as HTMLButtonElement).style.transform = 'translateY(-2px)'}
+                    onMouseOut={(e) => (e.target as HTMLButtonElement).style.transform = 'translateY(0)'}
                   >
                     Generate Temporary Email
                   </button>
@@ -637,8 +637,8 @@ const createNewEmail = async () => {
                               backgroundColor: !email.isRead ? '#374151' : 'transparent',
                               borderBottom: index < emails.length - 1 ? '1px solid #4a5568' : 'none'
                             }}
-                            onMouseOver={(e) => e.target.style.backgroundColor = '#4a5568'}
-                            onMouseOut={(e) => e.target.style.backgroundColor = !email.isRead ? '#374151' : 'transparent'}
+                            onMouseOver={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#4a5568'}
+                            onMouseOut={(e) => (e.target as HTMLButtonElement).style.backgroundColor = !email.isRead ? '#374151' : 'transparent'}
                           >
                             <div style={{
                               display: 'flex',
