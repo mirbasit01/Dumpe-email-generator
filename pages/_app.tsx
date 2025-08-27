@@ -1,16 +1,13 @@
-import "@/styles/globals.css";
-import TempEmailGenerator from "@/components/email/TempEmailGenerator";
-
-import type { AppProps } from "next/app";
+// pages/_app.tsx
+import type { AppProps } from 'next/app';
+import '../styles/globals.css';
+ import GmailnatorFetcher from '@/components/GmailnatorFetcher';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      {/* Your persistent UI like navbar, footer, or in your case email generator */}
-      <TempEmailGenerator />
-
-      {/* Render the current page */}
-      <Component {...pageProps} />
+      <GmailnatorFetcher /> {/* This will appear on every page */}
+      {/* <Component {...pageProps} /> */}
     </>
   );
 }

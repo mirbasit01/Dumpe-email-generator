@@ -1,5 +1,60 @@
+// // components/GmailnatorFetcher.tsx
+// import { useState } from 'react';
+// import axios from 'axios';
+
+// const GmailnatorFetcher: React.FC = () => {
+//   const [data, setData] = useState<any>(null);
+
+//   const fetchData = async () => {
+//     try {
+//       const response = await axios.post('/api/gmailnator');
+//       setData(response.data);
+//     } catch (err) {
+//       console.error(err);
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <button onClick={fetchData} className="p-2 bg-blue-500 text-white rounded">
+//         Fetch Gmailnator Data
+//       </button>
+
+//       {data && (
+//         <pre className="mt-4 bg-gray-100 p-2 rounded">{JSON.stringify(data, null, 2)}</pre>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default GmailnatorFetcher;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React, { useState, useEffect } from 'react';
 import { Copy, RefreshCw, Mail, Trash2, Clock, Shield, Eye } from 'lucide-react';
+import axios from 'axios';
 
 interface Email {
   id: string;
@@ -17,6 +72,7 @@ const TempEmailGenerator: React.FC = () => {
   const [timeRemaining, setTimeRemaining] = useState<number>(600); // 10 minutes in seconds
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
+ const [data, setData] = useState<any>(null);
 
   const domains = [
     '@tempmail.org',
@@ -40,14 +96,31 @@ const TempEmailGenerator: React.FC = () => {
     return username + domain;
   };
 
-  const createNewEmail = () => {
-    const newEmail = generateRandomEmail();
-    setCurrentEmail(newEmail);
-    setEmails([]);
-    setSelectedEmail(null);
-    setTimeRemaining(600);
-    setIsActive(true);
-  };
+//   const createNewEmail = () => {
+//     const newEmail = generateRandomEmail();
+//     setCurrentEmail(newEmail);
+//     setEmails([]);
+//     setSelectedEmail(null);
+//     setTimeRemaining(600);
+//     setIsActive(true);
+//   };
+
+
+const createNewEmail = async () => {
+
+
+    try {
+      const response = await axios.post('/api/gmailnator');
+      setData(response.data);
+      setCurrentEmail(response.data.email);
+    } catch (err) {
+      console.error(err);
+    }
+  
+}
+
+
+
 
   const copyToClipboard = async (text: string) => {
     try {
